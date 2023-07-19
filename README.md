@@ -20,6 +20,8 @@ Ubuntu, Debian:
 * Prerequisites
 * (linux) `g++ src/main.cpp -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system`. Then `./sfml-app`
 
+Once running, press letter `n` from the keyboard to move to 'n'ext scene (exercise). Once you reach the end, press `q`  to 'q'uit and terminate the program.
+
 ## Contributing
 
 Feel free to contribute to this project by submitting a pull request.
