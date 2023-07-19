@@ -25,12 +25,14 @@ Here are some general exercises that we may cover:
 
 To use this engine, simply compile and run the `main.cpp` file located in the `src` directory.
 
-## Dependencies
+## Prerequisites
 
 In Linux, make sure you have:
 
 Ubuntu, Debian:
 * `sudo apt-get install libsfml-dev`
+
+> **Devcontainer:** the development container image takes care of `libsfml-dev` library installation. If you choose such dev scenario, the prereq will be satisfied already.
 
 ## How to run
 * Clone
