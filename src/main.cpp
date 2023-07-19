@@ -92,7 +92,7 @@ void animateShapeRandomAppear(sf::CircleShape& circleShape, sf::RenderWindow& re
 
 
 int main(int argc, char ** argv){
-  sf::RenderWindow renderWindow(sf::VideoMode(1920, 1080), "Demo Game");
+  sf::RenderWindow renderWindow(sf::VideoMode(1920, 1080), "Vision therapy");
   
   sf::CircleShape circleShape(100);
   circleShape.setFillColor(sf::Color::Blue);
