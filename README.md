@@ -39,6 +39,8 @@ Ubuntu, Debian:
 * Prerequisites
 * (linux) `g++ src/main.cpp -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system`. Then `./sfml-app`
 
+> For CUDA-LAB: `nvcc src/<filename>.cu -o cusfml-app  -lsfml-graphics -lsfml-window -lsfml-system`. Then `./cusfml-app`
+
 Once running, press letter `n` from the keyboard to move to 'n'ext scene (exercise). Once you reach the end, press `q`  to 'q'uit and terminate the program.
 
 ## Contributing
