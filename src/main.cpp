@@ -1,104 +1,22 @@
 #include <SFML/Graphics.hpp>
 #include <chrono>
-
-void animateCircle(sf::CircleShape& circleShape, sf::RenderWindow& renderWindow) {
-    float speed = 1.0f;
-    float x = circleShape.getPosition().x;
-    float y = circleShape.getPosition().y;
-    float radius = circleShape.getRadius();
-    float windowWidth = renderWindow.getSize().x;
-    float windowHeight = renderWindow.getSize().y;
-
-    while (renderWindow.isOpen()) {
-        sf::Event event;
-        while (renderWindow.pollEvent(event) || true) {
-            
-            if (event.type == sf::Event::Closed) {
-                renderWindow.close();
-                break;
-            }
-            if (event.type == sf::Event::KeyPressed) {
-                if (event.key.code == sf::Keyboard::Q) {
-                    renderWindow.close();
-                    break;
-                }
-            }
-
-            x += speed;
-            if (x + radius > windowWidth) {
-                x = windowWidth - radius;
-                speed = -speed;
-            } else if (x - radius < 0) {
-                x = radius;
-                speed = -speed;
-            }
-            circleShape.setPosition(x - circleShape.getRadius(), y + windowHeight / 2 - (circleShape.getRadius() * 1.5f));
-            renderWindow.clear(sf::Color::Yellow);
-            renderWindow.draw(circleShape);
-            renderWindow.display();
-        }
-    }
-}
-
-void animateShapeRandomAppear(sf::CircleShape& circleShape, sf::RenderWindow& renderWindow) {
-    
-    while (renderWindow.isOpen()) {
-        sf::Event event;
-        while (renderWindow.pollEvent(event) || true) {
-            
-            if (event.type == sf::Event::Closed) {
-                renderWindow.close();
-            }
-            if (event.type == sf::Event::KeyPressed) {
-                if (event.key.code == sf::Keyboard::N) {
-                    break;
-                }
-            }
-
-            sf::Vector2f position = sf::Vector2f(rand() % 100, rand() % 100);
-            float radius = circleShape.getRadius();
-
-            if (position.x + radius > renderWindow.getSize().x) {
-                position.x = renderWindow.getSize().x - radius;
-            } else if (position.x - radius < 0) {
-                position.x = radius;
-            }
-            if (position.y + radius > renderWindow.getSize().y) {
-                position.y = renderWindow.getSize().y - radius;
-            } else if (position.y - radius < 0) {
-                position.y = radius;
-            }
-            circleShape.setPosition(position);
-
-            renderWindow.clear(sf::Color::Yellow);
-            
-            static auto lastTime = std::chrono::high_resolution_clock::now();
-            auto currentTime = std::chrono::high_resolution_clock::now();
-            float elapsedSeconds = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - lastTime).count() / 1000.0f;
-            if (elapsedSeconds < 1.0f) {
-                renderWindow.draw(circleShape);
-            }
-            if (elapsedSeconds > 2.0f) {
-                lastTime = currentTime;
-            }
-            
-            renderWindow.display();
-        }
-        break;
-    }
-
-}
-
-
+#include "presentation.hpp"
 
 int main(int argc, char ** argv){
-  sf::RenderWindow renderWindow(sf::VideoMode(1920, 1080), "Vision therapy");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Vision Threrapy");
+    window.setFramerateLimit(60);
+    sf::CircleShape shape(50.f);
+    shape.setFillColor(sf::Color::Green);
+    
+    // TODO: a better implementation of this
+    shape.setPosition(25.f, 275.f);
+    //
 
-  sf::CircleShape circleShape(100);
-  circleShape.setFillColor(sf::Color::Green);
+    Presentation presentation(10.0f);
+    //presentation.addScene(Scene(std::make_unique<CircleAnimationSlide>(10.0f)));
+    presentation.addScene(Scene(std::make_unique<RandommSpotAnimationSlide>(10.0f)));
 
-  animateShapeRandomAppear(circleShape, renderWindow);
-  animateCircle(circleShape, renderWindow);
-
-  return 0;
+    presentation.runPresentation(window, shape);
+    
+    return 0;
 }
