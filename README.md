@@ -37,7 +37,7 @@ Ubuntu, Debian:
 ## How to run
 * Clone
 * Prerequisites
-* (linux) `g++ src/main.cpp -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system`. Then `./sfml-app`
+* (linux) `g++ src/main.cpp src/presentation.cpp -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system`. Then `./sfml-app`
 
 > For CUDA-LAB: `nvcc src/<filename>.cu -o cusfml-app  -lsfml-graphics -lsfml-window -lsfml-system`. Then `./cusfml-app`
 
