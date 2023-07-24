@@ -13,7 +13,7 @@ int main(int argc, char ** argv){
     //
 
     Presentation presentation(10.0f);
-    // TODO: as transition between scenes is not quite yet working (Issue #pending),
+    // TODO: as transition between scenes is not quite yet working (Issue #9),
     //       we will only have one scene for now.
     //       Manually switch between scenes by commenting/uncommenting the lines below.
     //
