@@ -13,8 +13,13 @@ int main(int argc, char ** argv){
     //
 
     Presentation presentation(10.0f);
+    // TODO: as transition between scenes is not quite yet working (Issue #pending),
+    //       we will only have one scene for now.
+    //       Manually switch between scenes by commenting/uncommenting the lines below.
+    //
     //presentation.addScene(Scene(std::make_unique<CircleAnimationSlide>(10.0f)));
-    presentation.addScene(Scene(std::make_unique<RandommSpotAnimationSlide>(10.0f)));
+    presentation.addScene(Scene(std::make_unique<RandommSpotAnimationSlide>(10.0f))); // This one is buggy (Issue #4)
+    //
 
     presentation.runPresentation(window, shape);
     
