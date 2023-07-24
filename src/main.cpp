@@ -3,13 +3,19 @@
 #include "presentation.hpp"
 
 int main(int argc, char ** argv){
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Vision Threrapy");
+
+    // NOTE:
+    // Using sf::VideoMode now requires sf::Vecotr2u(u_int, u_int) as the parameter
+    // not sf::VideoMode(u_int, u_int)
+    sf::RenderWindow window(sf::VideoMode(sf::Vector2u(800, 600)), "Vision Threrapy");
+
     window.setFramerateLimit(60);
     sf::CircleShape shape(50.f);
     shape.setFillColor(sf::Color::Green);
     
     // TODO: a better implementation of this
-    shape.setPosition(25.f, 275.f);
+    // setPosition now requires sf::Vector2f(float, float) as the parameter
+    shape.setPosition(sf::Vector2f(25.f, 275.f));
     //
 
     Presentation presentation(10.0f);
@@ -18,7 +24,7 @@ int main(int argc, char ** argv){
     //       Manually switch between scenes by commenting/uncommenting the lines below.
     //
     //presentation.addScene(Scene(std::make_unique<CircleAnimationSlide>(10.0f)));
-    presentation.addScene(Scene(std::make_unique<RandommSpotAnimationSlide>(10.0f))); // This one is buggy (Issue #4)
+    presentation.addScene(Scene(std::make_unique<RandomSpotAnimationSlide>(10.0f))); // This one is buggy (Issue #4)
     //
 
     presentation.runPresentation(window, shape);

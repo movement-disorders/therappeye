@@ -16,7 +16,7 @@ class CircleAnimationSlide : public Slide {
 public:
     CircleAnimationSlide(float duration) : Slide(duration) {}
     float speed = 12.0f;
-    float radius = 0.0;
+    float radius = 0.0f;
 
     void performAction(sf::RenderWindow& window, sf::Shape& shape) override {
         float x = shape.getPosition().x;
@@ -55,7 +55,7 @@ public:
                 }
 
                 shape.setFillColor(sf::Color::Green);
-                shape.move(speed, 0);
+                shape.move(sf::Vector2f(speed, 0));
                 window.clear(sf::Color::Yellow);
                 window.draw(shape);
                 window.display();
@@ -64,9 +64,9 @@ public:
     }
 };
 
-class RandommSpotAnimationSlide : public Slide {
+class RandomSpotAnimationSlide : public Slide {
 public:
-    RandommSpotAnimationSlide(float duration) : Slide(duration) {}
+    RandomSpotAnimationSlide(float duration) : Slide(duration) {}
 
     void performAction(sf::RenderWindow& window, sf::Shape& shape) override {
         sf::Vector2f position = sf::Vector2f(rand() % 100, rand() % 100);
