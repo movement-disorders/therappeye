@@ -66,7 +66,7 @@ public:
 
 class RandomSpotAnimationSlide : public Slide {
 public:
-    RandomSpotAnimationSlide(float duration) : Slide(duration) {}
+    explicit RandomSpotAnimationSlide(float duration) : Slide(duration) {}
 
     void performAction(sf::RenderWindow& window, sf::Shape& shape) override {
         sf::Vector2f position = sf::Vector2f(rand() % 100, rand() % 100);
@@ -82,7 +82,7 @@ public:
         float windowHeight = window.getSize().y;
 
         while (window.isOpen()) {
-            sf::Event event;
+            sf::Event event{};
             while (window.pollEvent(event) || true) {
                 if (event.type == sf::Event::Closed) {
                     window.close();
@@ -132,7 +132,7 @@ private:
     std::unique_ptr<Slide> actionSlide;
 
 public:
-    Scene(std::unique_ptr<Slide> action) : actionSlide(std::move(action)) {}
+    explicit Scene(std::unique_ptr<Slide> action) : actionSlide(std::move(action)) {}
 
     void runScene(sf::RenderWindow& window, sf::Shape& shape);
 };
@@ -143,7 +143,7 @@ private:
     float totalTime;
 
 public:
-    Presentation(float totalTime) : totalTime(totalTime) {}
+    explicit Presentation(float totalTime) : totalTime(totalTime) {}
 
     void addScene(Scene scene) {
         float slideDuration = totalTime / scenes.size();
