@@ -1,13 +1,30 @@
+//**********************************************
+//
+// Project: therappeye
+// File: src/main.cpp
+//
+// Compiler Command: clang++ -g -Wall -std=c++17 -framework sfml-window -framework sfml-graphics -framework sfml-system
+//                   src/main.cpp -o main
+//
+// Date Created: 
+// Date Modified: 
+//
+// Description: 
+//
+//**********************************************
+
+
+
 #include <SFML/Graphics.hpp>
 #include <chrono>
 #include "presentation.hpp"
 
-int main(int argc, char ** argv){
+int main(int argc, const char* argv[]){
 
     // NOTE:
-    // Using sf::VideoMode now requires sf::Vecotr2u(u_int, u_int) as the parameter
+    // Using sf::VideoMode now requires sf::Vector2u(u_int, u_int) as the parameter
     // not sf::VideoMode(u_int, u_int)
-    sf::RenderWindow window(sf::VideoMode(sf::Vector2u(800, 600)), "Vision Threrapy");
+    sf::RenderWindow window(sf::VideoMode(sf::Vector2u(800, 600)), "Vision Therapy");
 
     window.setFramerateLimit(60);
     sf::CircleShape shape(50.f);

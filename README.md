@@ -4,7 +4,7 @@ Eye, vision and coordination exercises.
 
 (documentation is a work in progress)
 
-## The story
+## The Story
 
 Certain exercises and strategies that can help maintain and improve visual function, and potentially mitigate the impact of vision problems.
 
@@ -21,27 +21,39 @@ Here are some general exercises that we may cover:
 * Photophobia management: For individuals with photophobia, using tinted lenses or wearing a hat or visor outdoors can help reduce light sensitivity.
 * Adaptive strategies: Learning to adapt to visual changes by using lighting cues, contrasting colors, or modifying the environment can improve functional vision.
 
-## Usage
-
-To use this engine, simply compile and run the `main.cpp` file located in the `src` directory.
-
 ## Prerequisites
 
-In Linux, make sure you have:
+### SFML
 
-Ubuntu, Debian:
-* `sudo apt-get install libsfml-dev`
+`Therappeye` requires the Simple and Fast Multimedia Library (`SFML`).
+`SFML` is an open source, multi-platform library that works on Windows, Linux, and MacOS (including the newer Apple Silicon chips). You can visit the `SFML` website at <https://www.sfml-dev.org/index.php> or go to the official `Github` repository at <https://github.com/SFML/SFML>. Their website contains the download instructions and all of the documentation for the libraries. See the directions below for a quick overview of getting `SFML` installed on your system.
 
-> **Devcontainer:** the development container image takes care of `libsfml-dev` library installation. If you choose such dev scenario, the prereq will be satisfied already.
+> The minimum required version of SFML is: `2.6.0+`
+
+#### * MacOs (M1/M2 chips)
+
+#### * Macos (x86 intel chips)
+
+#### * Linux (All distributions)
+
+#### * Windows (10/11)
+
+### C/C++ Compiler
+
+`Therappeye` will require a C/C++ compiler to build the application. See below for a list of <u>recommended</u> compilers per Operating System:
+
+* MacOS: `clang++` or `g++` (if available)
+* Linux: `g++`
+* Windows (option 1): install `MinGW` at <https://sourceforge.net/projects/mingw/> and then `g++`
+* Windows (option 2): install Windows Subset for Linux (`WSL`) at <https://learn.microsoft.com/en-us/windows/wsl/install> using Debian/Ubuntu's `g++`
 
 ## How to run
+
 * Clone
 * Prerequisites
 * (linux) `g++ src/main.cpp src/presentation.cpp -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system`. Then `./sfml-app`
 
-> For CUDA-LAB: `nvcc src/<filename>.cu -o cusfml-app  -lsfml-graphics -lsfml-window -lsfml-system`. Then `./cusfml-app`
-
-Once running, press letter `n` from the keyboard to move to 'n'ext scene (exercise). Once you reach the end, press `q`  to 'q'uit and terminate the program.
+> For CUDA-LAB: `nvcc src/<filename>.cu -o cusfml-app -lsfml-graphics -lsfml-window -lsfml-system`. Then `./cusfml-app`
 
 ## Contributing
 
