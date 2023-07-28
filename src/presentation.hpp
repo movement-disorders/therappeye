@@ -64,9 +64,9 @@ public:
     }
 };
 
-class RandommSpotAnimationSlide : public Slide {
+class RandomSpotAnimationSlide : public Slide {
 public:
-    RandommSpotAnimationSlide(float duration) : Slide(duration) {}
+    RandomSpotAnimationSlide(float duration) : Slide(duration) {}
 
     void performAction(sf::RenderWindow& window, sf::Shape& shape) override {
         sf::Vector2f position = sf::Vector2f(rand() % 100, rand() % 100);
