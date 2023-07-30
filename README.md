@@ -4,7 +4,7 @@ Eye, vision and coordination exercises.
 
 (documentation is a work in progress)
 
-## The story
+## The Story
 
 Certain exercises and strategies that can help maintain and improve visual function, and potentially mitigate the impact of vision problems.
 
