@@ -18,7 +18,7 @@ int main(int argc, char ** argv){
     //       Manually switch between scenes by commenting/uncommenting the lines below.
     //
     //presentation.addScene(Scene(std::make_unique<CircleAnimationSlide>(10.0f)));
-    presentation.addScene(Scene(std::make_unique<RandomSpotAnimationSlide>(10.0f))); // This one is buggy (Issue #4)
+        presentation.addScene(Scene(std::make_unique<RandomSpotAnimationSlide>(10.0f)));
     //
 
     presentation.runPresentation(window, shape);
