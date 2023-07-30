@@ -2,6 +2,7 @@
 #include <memory>
 #include <vector>
 #include <chrono>
+#include <ctime>
 
 class Slide {
 public:
@@ -69,19 +70,26 @@ public:
     RandomSpotAnimationSlide(float duration) : Slide(duration) {}
 
     void performAction(sf::RenderWindow& window, sf::Shape& shape) override {
-        sf::Vector2f position = sf::Vector2f(rand() % 100, rand() % 100);
         
-        // HACK: tricky way to get the radius of the shape.
+        // NOTE: seed the random number generator with the current time,
+        //       so that we get different random numbers every time we run the program.
+        srand(time(nullptr));
+        //
+
         float radius = 0.0;
         if (auto circle = dynamic_cast<sf::CircleShape*>(&shape)) {
             radius = circle->getRadius();
         }
-        //
 
         float windowWidth = window.getSize().x;
         float windowHeight = window.getSize().y;
 
+        float frameTime = 1.0f;
+        float accumulator = 0.0f;
+        auto currentTime = std::chrono::high_resolution_clock::now();
+
         while (window.isOpen()) {
+            
             sf::Event event;
             while (window.pollEvent(event) || true) {
                 if (event.type == sf::Event::Closed) {
@@ -95,35 +103,54 @@ public:
                     }
                 }
 
-                if (position.x + radius > windowWidth) {
-                    position.x = windowWidth - radius;
-                } else if (position.x - radius < 0) {
-                    position.x = radius;
-                }
-                
-                if (position.y + radius > windowHeight) {
-                    position.y = windowHeight - radius;
-                } else if (position.y - radius < 0) {
-                    position.y = radius;
-                }
+                auto newTime = std::chrono::high_resolution_clock::now();
+                float deltaTime = std::chrono::duration_cast<std::chrono::microseconds>(newTime - currentTime).count() / 1000000.0f;
+                currentTime = newTime;
 
-                shape.setFillColor(sf::Color::Green);
-                shape.setPosition(position);
-                window.clear(sf::Color::Yellow);
+                accumulator += deltaTime;
+                while (accumulator >= frameTime) {
+                    accumulator -= frameTime;
 
-                static auto lastTime = std::chrono::high_resolution_clock::now();
-                auto currentTime = std::chrono::high_resolution_clock::now();
-                float elapsedSeconds = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - lastTime).count() / 1000.0f;
-                if (elapsedSeconds < 1.0f) {
+                    sf::Vector2f position = getRandomPosition(window, radius);
+
+                    position = handleWallCollisions(window, position, radius);
+
+                    shape.setFillColor(sf::Color::Green);
+                    shape.setPosition(position);
+                    window.clear(sf::Color::Yellow);
                     window.draw(shape);
+                    window.display();
                 }
-                if (elapsedSeconds > 2.0f) {
-                    lastTime = currentTime;
-                }
-                
-                window.display();
             }
         }
+    }
+
+private:
+    sf::Vector2f getRandomPosition(sf::RenderWindow& window, float radius) {
+        float windowWidth = window.getSize().x;
+        float windowHeight = window.getSize().y;
+
+        return sf::Vector2f(rand() % static_cast<int>(windowWidth - 2 * radius) + radius,
+                            rand() % static_cast<int>(windowHeight - 2 * radius) + radius);
+    }
+
+    sf::Vector2f handleWallCollisions(sf::RenderWindow& window, sf::Vector2f position, float radius) {
+        float windowWidth = window.getSize().x;
+        float windowHeight = window.getSize().y;
+
+        if (position.x + radius > windowWidth) {
+            position.x = windowWidth - radius;
+        } else if (position.x - radius < 0) {
+            position.x = radius;
+        }
+        
+        if (position.y + radius > windowHeight) {
+            position.y = windowHeight - radius;
+        } else if (position.y - radius < 0) {
+            position.y = radius;
+        }
+
+        return position;
     }
 };
 
