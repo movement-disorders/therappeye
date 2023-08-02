@@ -3,7 +3,7 @@
 #include "presentation.hpp"
 
 int main(int argc, char ** argv){
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Vision Threrapy");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Vision Therapy");
     window.setFramerateLimit(60);
     sf::CircleShape shape(50.f);
     shape.setFillColor(sf::Color::Green);
