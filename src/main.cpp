@@ -8,10 +8,6 @@ int main(int argc, char ** argv){
     sf::CircleShape shape(50.f);
     shape.setFillColor(sf::Color::Green);
     
-    // TODO: a better implementation of this
-    shape.setPosition(25.f, 275.f);
-    //
-
     Presentation presentation(10.0f);
     // TODO: as transition between scenes is not quite yet working (Issue #9),
     //       we will only have one scene for now.

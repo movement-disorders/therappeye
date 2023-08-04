@@ -26,6 +26,10 @@ public:
         // HACK: tricky way to get the radius of the shape.
         if (auto circle = dynamic_cast<sf::CircleShape*>(&shape)) {
             radius = circle->getRadius();
+
+            // set initial position of the shape to the vertical center of the window, far left horizontally.
+            shape.setPosition(radius, window.getSize().y / 2 - radius);
+
         }
         //
 
@@ -70,7 +74,6 @@ public:
     RandomSpotAnimationSlide(float duration) : Slide(duration) {}
 
     void performAction(sf::RenderWindow& window, sf::Shape& shape) override {
-        
         // NOTE: seed the random number generator with the current time,
         //       so that we get different random numbers every time we run the program.
         srand(time(nullptr));
@@ -79,6 +82,9 @@ public:
         float radius = 0.0;
         if (auto circle = dynamic_cast<sf::CircleShape*>(&shape)) {
             radius = circle->getRadius();
+
+            // set initial position of the shape to the center of the window.
+            shape.setPosition(window.getSize().x / 2 - radius, window.getSize().y / 2 - radius);
         }
 
         float windowWidth = window.getSize().x;
