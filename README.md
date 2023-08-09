@@ -25,23 +25,53 @@ Here are some general exercises that we may cover:
 
 To use this engine, simply compile and run the `main.cpp` file located in the `src` directory.
 
+## Compiling for MacOS with provided Makefiles
+
+If you are using MacOs along with having installed the `frameworks` for `SFML` (as suggested by their website):
+
+* open a terminal.
+* `cd` into `therappeye` folder.
+* run command `make therappeye -f makeMac.mk`. The `-f` argument tells `make` which `makefile` to use.
+* for now (08/09/2023) some warnings will be generated but program will compile.
+* run command `./therappeye` to start program.
+
+If you would like to clean the directory (remove object files, debug symbols), use command `make clean -f makeMac.mk` in the `therappeye` folder.
+
+If you would like to remove the executable, use the command `rm -f therappeye` in the `therappeye` folder.
+
+## Compiling for a Unix/Linux based platform with Provided Makefiles
+
+If you are using a Unix/Linux based platform, which includes `Windows Subset for Linux (WSL)` on Windows and VSCode's integrated `bash` terminal. And have installed the `libraries` for `SFML`, do the following:
+
+* open a terminal.
+* `cd` into `therappeye` folder.
+* run command `make therappeye -f makeUnix.mk`. The `-f` argument tells `make` which `makefile` to use.
+* for now (08/09/2023) some warnings will be generated but program will compile.
+* run command `./therappeye` to start program.
+
+If you would like to clean the directory (remove object files, debug symbols), use command `make clean -f makeUnix.mk` in the `therappeye` folder.
+
+If you would like to remove the executable, use the command `rm -f therappeye` in the `therappeye` folder.
+
 ## Prerequisites
 
 In Linux, make sure you have:
 
 Ubuntu, Debian:
+
 * `sudo apt-get install libsfml-dev`
 
 > **Devcontainer:** the development container image takes care of `libsfml-dev` library installation. If you choose such dev scenario, the prereq will be satisfied already.
 
 ## How to run
+
 * Clone
 * Prerequisites
 * (linux) `g++ src/main.cpp src/presentation.cpp -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system`. Then `./sfml-app`
 
 > For CUDA-LAB: `nvcc src/<filename>.cu -o cusfml-app  -lsfml-graphics -lsfml-window -lsfml-system`. Then `./cusfml-app`
 
-Once running, press letter `n` from the keyboard to move to 'n'ext scene (exercise). Once you reach the end, press `q`  to 'q'uit and terminate the program.
+Once running, press letter `n` from the keyboard to move to 'n'ext scene (exercise). Once you reach the end, press `q`  to 'quit' and terminate the program.
 
 ## Contributing
 
