@@ -67,9 +67,9 @@ Ubuntu, Debian:
 
 * Clone
 * Prerequisites
-* (linux) `g++ src/main.cpp src/presentation.cpp -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system`. Then `./sfml-app`
+* (linux) `g++ src/main.cpp src/presentation.cpp -o therappeye -lsfml-graphics -lsfml-window -lsfml-system`. Then `./therappeye`
 
-> For CUDA-LAB: `nvcc src/<filename>.cu -o cusfml-app  -lsfml-graphics -lsfml-window -lsfml-system`. Then `./cusfml-app`
+> For CUDA-LAB: `nvcc src/<filename>.cu -o cuda-therappeye  -lsfml-graphics -lsfml-window -lsfml-system`. Then `./cuda-therappeye`
 
 Once running, press letter `n` from the keyboard to move to 'n'ext scene (exercise). Once you reach the end, press `q`  to 'quit' and terminate the program.
 
