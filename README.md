@@ -75,4 +75,4 @@ Once running, press letter `n` from the keyboard to move to 'n'ext scene (exerci
 
 ## Contributing
 
-Feel free to contribute to this project by submitting a pull request.
+You're free to contribute to this project by submitting a pull request.
