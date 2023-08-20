@@ -6,7 +6,7 @@ Eye, vision and coordination exercises.
 
 ## The Story
 
-Certain exercises and strategies that can help maintain and improve visual function, and potentially mitigate the impact of vision problems.
+Certain exercises and strategies that can help maintain and improve visual function and potentially mitigate the impact of vision problems.
 
 > It's important to note that the effectiveness of these exercises may vary depending on the individual and the progression of the disease. As always, this is not a space to seek medical answers.
 
