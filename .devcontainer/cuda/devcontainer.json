@@ -1,0 +1,25 @@
+{
+	"name": "Jetson Orin Nano CUDA ready for C/C++ (with X11 Forwarding)",
+	"image": "cuda/cpp:latest",
+	
+	"customizations": {
+		"vscode": {
+            "extensions": [
+				"ms-vscode.cpptools-extension-pack",
+				"NVIDIA.nsight-vscode-edition"
+			]
+		}
+	},
+
+	"runArgs": [
+		"--net=host",
+		"--privileged",
+		"--runtime",
+		"nvidia",
+		"-v", "/tmp/.X11-unix:/tmp/.X11-unix"
+	],
+	
+	"remoteEnv": {
+		"DISPLAY": "${localEnv:DISPLAY}"
+	}
+}
