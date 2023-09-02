@@ -4,6 +4,20 @@ Eye, vision and coordination exercises.
 
 (documentation is a work in progress)
 
+## Latest Update
+
+the original idea was to get the environment to run a Presentation -> Scenes -> Slides scheme.
+
+Looking into the video-series (see "source playlist") I realized there  was an opportunity for a new slide sligthly
+based on tne porposed game.
+
+In a future version, tracking users eyes with CV, be it up close from a wereable glass or VR device would be great. First release will base on a mouse click, discrete or element-over.
+
+> source playlist by Suraj Sharma (https://www.youtube.com/@SurajSharmaFourKnob) available at https://www.youtube.com/playlist?list=PL6xSOsbVA1eb_QqMTTcql_3PdOiE928up
+
+We're ditching the `presentation->scene->slide` infrastructure in favor of integrating an `slide` slice, basing the main loop on what's proposed in the series.
+
+
 ## The Story
 
 Certain exercises and strategies that can help maintain and improve visual function and potentially mitigate the impact of vision problems.
@@ -24,6 +38,8 @@ Here are some general exercises that we may cover:
 ## Usage
 
 To use this engine, simply compile and run the `main.cpp` file located in the `src` directory.
+
+> Once running, press the 'N' key to cycle through the slides, or the 'Q' to quit the app.
 
 ## Compiling for MacOS with provided Makefiles
 

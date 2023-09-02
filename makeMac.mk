@@ -20,11 +20,14 @@ msg:
 #########################################################################################
 
 # Compile therappeye ####################################################################
-therappeye: presentation.o main.o
-	${CXX} ${CXX_FLAGS} presentation.o main.o -o therappeye ${FRAMEWORK} ${FRAMEWORK_OPTS}
+therappeye: slide.o engine.o main.o
+	${CXX} ${CXX_FLAGS} slide.o engine.o main.o -o therappeye ${FRAMEWORK} ${FRAMEWORK_OPTS}
 
-presentation.o:
-	${CXX} ${CXX_FLAGS} -c src/presentation.cpp
+slide.o:
+	${CXX} ${CXX_FLAGS} -c src/slide.cpp
+
+engine.o:
+	${CXX} ${CXX_FLAGS} -c src/engine.cpp
 
 main.o:
 	${CXX} ${CXX_FLAGS} -c src/main.cpp
