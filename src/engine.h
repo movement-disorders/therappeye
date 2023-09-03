@@ -22,10 +22,6 @@ private:
 	std::vector<Slide*> slides;
 	unsigned short currentSlide = 0;
 
-	float dt;
-
-	float gridSize;
-
 	//Initialization
 	void initVariables();
 	void initWindow();
