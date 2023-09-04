@@ -234,3 +234,114 @@ void ContinuousMovingCircleSlide::performAction(sf::RenderWindow& window, sf::Sh
     }
 }
 */
+
+void CountTilesAnimationSlide::spawnTile()
+{
+    this->tile.setPosition(
+        static_cast<float>(rand() % static_cast<int>(this->window->getSize().x - this->tile.getSize().x)),
+        0.f
+    );
+
+    int type = rand() % 2;
+
+    switch (type)
+    {
+    case 0:
+        this->tile.setFillColor(sf::Color::Green);
+        this->tile.setSize(sf::Vector2f(100.f, 100.f));
+        break;
+    case 1:
+        this->tile.setFillColor(sf::Color::Magenta);
+        this->tile.setSize(sf::Vector2f(70.f, 70.f));
+    default:
+        break;
+    }
+
+    
+    this->tile.setScale(0.5f, 0.5f);
+
+    
+
+    this->tiles.push_back(this->tile);
+}
+
+void CountTilesAnimationSlide::updateTiles()
+{
+    if (this->tiles.size() < this->maxTiles)
+    {
+        if (this->tileSpawnTimer >= this->tileSpawnTimerMax)
+        {
+            this->spawnTile();
+            this->tileSpawnTimer = 0.f;
+        }
+        else
+            this->tileSpawnTimer += 1.f;
+    }
+
+    // for (auto &e : this->tiles) {
+    //     e.move(0.f, 5.f);
+    // }
+    // Not the best way to solve this,but works for the time being.
+    for (int i = 0; i < this->tiles.size(); i++) {
+        bool deleted = false;
+
+        this->tiles[i].move(0.f, 5.f);
+
+        if (this->tiles[i].getPosition().y > this->window->getSize().y)
+            this->tiles.erase(this->tiles.begin() + i);
+    }
+
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+        bool deleted = false;
+
+        if (this->mouseHeld == false) {
+            this->mouseHeld = true;
+            for (int i = 0; i < this->tiles.size() && deleted == false; i++) {
+                
+                if (this->tiles[i].getGlobalBounds().contains(this->mousePosView)) {
+                    deleted = true;
+                    this->tiles.erase(this->tiles.begin() + i);
+                }
+            }
+        }
+    } else {
+        this->mouseHeld = false;
+    }
+}
+
+void CountTilesAnimationSlide::renderTiles()
+{
+    for (auto &e : this->tiles) {
+        this->window->draw(e);
+    }
+}
+
+void CountTilesAnimationSlide::updateMousePositions()
+{
+    this->mousePosWindow = sf::Mouse::getPosition(*this->window);
+    this->mousePosView = this->window->mapPixelToCoords(this->mousePosWindow);
+}
+
+void CountTilesAnimationSlide::setup(sf::RenderWindow *window)
+{
+    this->window = window;
+
+    // NOTE: seed the random number generator with the current time,
+    //       so that we get different random numbers every time we run the program.
+    srand(time(nullptr));
+    //
+
+    this->tileSpawnTimerMax = 10.f;
+    this->tileSpawnTimer = this->tileSpawnTimerMax;
+    this->maxTiles = 10;
+    this->mouseHeld = false;
+}
+
+void CountTilesAnimationSlide::performAction()
+{
+    this->updateMousePositions();
+    this->updateTiles();
+    //
+    // window->draw(this->tile);
+    this->renderTiles();
+}

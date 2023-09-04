@@ -8,6 +8,8 @@
 #include <SFML/Network.hpp>
 
 #include <chrono>
+#include <vector>
+#include <ctime>
 
 class Slide {
 public:
@@ -108,6 +110,39 @@ private:
 public:
     RandomSpotWithLineAnimationSlide() : Slide() {}
     ~RandomSpotWithLineAnimationSlide() {}
+
+    void setup(sf::RenderWindow* window) override;
+
+    void performAction() override ;
+};
+
+//
+// The idea for this Animation comes from Suraj Sharma playlist on SFML (the library we're using).
+// Pleaase check it out at https://www.youtube.com/playlist?list=PL6xSOsbVA1eb_QqMTTcql_3PdOiE928up
+//
+class CountTilesAnimationSlide : public Slide {
+private:
+
+    sf::Vector2i mousePosWindow;
+    sf::Vector2f mousePosView;
+    // Logic
+    float tileSpawnTimer;
+    float tileSpawnTimerMax;
+    unsigned int maxTiles;
+    bool mouseHeld;
+
+    std::vector<sf::RectangleShape> tiles;
+    sf::RectangleShape tile;
+
+    void spawnTile();
+    void updateTiles();
+    void renderTiles();
+
+    void updateMousePositions();
+
+public:
+    CountTilesAnimationSlide() : Slide() {}
+    ~CountTilesAnimationSlide() {}
 
     void setup(sf::RenderWindow* window) override;
 
