@@ -118,7 +118,7 @@ public:
 
 //
 // The idea for this Animation comes from Suraj Sharma playlist on SFML (the library we're using).
-// Pleaase check it out at https://www.youtube.com/playlist?list=PL6xSOsbVA1eb_QqMTTcql_3PdOiE928up
+// Please check it out at https://www.youtube.com/playlist?list=PL6xSOsbVA1eb_QqMTTcql_3PdOiE928up
 //
 class CountTilesAnimationSlide : public Slide {
 private:
