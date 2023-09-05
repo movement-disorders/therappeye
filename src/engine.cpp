@@ -8,6 +8,7 @@ void Engine::initVariables()
     this->slides.push_back(new RandomSpotAnimationSlide());
     this->slides.push_back(new SideToSideCircleAnimationSlide());
     this->slides.push_back(new RandomSpotWithLineAnimationSlide());
+    this->slides.push_back(new CountTilesAnimationSlide());
 }
 
 void Engine::initWindow()
@@ -75,7 +76,7 @@ void Engine::nextSlide()
 
 void Engine::render()
 {
-    this->window->clear(sf::Color::Blue);
+    this->window->clear();
     
     // Current slide rendering happens here (performAction).
     // Each slide has a reference to the window, so it can render itself.
