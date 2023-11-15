@@ -104,7 +104,7 @@ private:
     float lineFrameTime = 0.01f;
     sf::Clock lineClock = sf::Clock();
 
-    float lineSpeed = 100.f;
+    float lineSpeed = 500.f;
     float lineCurrentX = 0.f;
     
 public:
