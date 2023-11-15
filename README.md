@@ -8,8 +8,8 @@ Eye, vision and coordination exercises.
 
 the original idea was to get the environment to run a Presentation -> Scenes -> Slides scheme.
 
-Looking into the video-series (see "source playlist") I realized there  was an opportunity for a new slide sligthly
-based on tne porposed game.
+Looking into the video-series (see "source playlist") we realized there was an opportunity for a new slide sligthly
+based on the series-proposed game.
 
 In a future version, tracking users eyes with CV, be it up close from a wereable glass or VR device would be great. First release will base on a mouse click, discrete or element-over.
 
