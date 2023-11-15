@@ -13,10 +13,9 @@ void Engine::initVariables()
 
 void Engine::initWindow()
 {
-    this->videoMode.height = 600;
-    this->videoMode.width = 800;
+    this->videoMode = sf::VideoMode::getDesktopMode();
 
-    this->window = new sf::RenderWindow(this->videoMode, "Eye Therapy");
+    this->window = new sf::RenderWindow(this->videoMode, "Eye Therapy", sf::Style::Fullscreen);
     this->window->setFramerateLimit(60);
 }
 
